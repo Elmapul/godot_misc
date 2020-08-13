@@ -1,7 +1,9 @@
+
+[gd_resource type="Shader" format=2]
+
+[resource]
+code = "shader_type canvas_item;
 //an shader that convert RGB to HSL (and show it on screen for debugging purposes)
-
-shader_type canvas_item;
-
 float resto(float aux, float valor){
 	
 	aux=aux - (valor * floor(aux/valor)); // mod of division
@@ -81,3 +83,4 @@ void fragment(){
 	
 	
 }
+"
