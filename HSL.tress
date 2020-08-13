@@ -1,0 +1,83 @@
+//an shader that convert RGB to HSL (and show it on screen for debugging purposes)
+
+shader_type canvas_item;
+
+float resto(float aux, float valor){
+	
+	aux=aux - (valor * floor(aux/valor)); // mod of division
+	return aux; 
+}
+
+float cMin(float r,float g, float b){
+	float Min=1.0;
+	if (r<Min){Min=r;}
+	if (g<Min){Min=g;}
+	if (b<Min){Min=b;}
+	return Min;}
+	
+float cMax(float r, float g, float b){
+	float Max=0.0;
+	if (r>Max){Max=r;}
+	if (g>Max){Max=g;}
+	if (b>Max){Max=b;}
+	return Max;}
+	
+vec3 toHSL(float r, float g, float b){
+	vec3 hsl = vec3(1.0, 1.0, 2.0);
+	
+	float cmin =cMin(r,g,b);
+	float cmax = cMax(r,g,b);
+    float delta = cmax - cmin;
+	float h=0.0;
+	float s=0.0;
+	float l=0.0;
+	
+	if (delta == 0.0){h = 0.0;}
+    if (cmax == r){ 
+		float aux= ((g - b) / delta) ;
+		h = resto( aux , 6.0);
+		}
+	if (cmax == g){ 
+		h = (b - r) / delta + 2.0;
+		}
+	if (cmax == b){ 
+		 h = (r - g) / delta + 4.0;
+	}
+	h=h * 60.0;
+	h = round(h);
+	
+	if (h < 0.0)
+      h += 360.0;
+	
+	l = (cmax + cmin) / 2.0;
+	if (delta==0.0){
+		s=0.0; 
+	}else{
+		 s= delta / (1.0 - abs(2.0 * l - 1.0));
+	}
+	s =s +(s * 100.0);//.toFixed(1);
+	l = +(l * 100.0);//.toFixed(1);
+	
+	hsl = vec3(h, s, l);
+	return hsl;
+}
+
+void fragment(){
+	COLOR = texture(TEXTURE, UV); //read from texture
+	
+	
+	float r= COLOR.r ;
+	float g=COLOR.g;
+	float b= COLOR.b;
+	
+	vec3 HSL= toHSL(r,g,b);
+	
+	COLOR.r=HSL.x /360.0; //hue
+	COLOR.g=HSL.y /100.0; //saturation
+	COLOR.b=HSL.z /100.0; //luminance
+	
+
+
+	
+	
+}
