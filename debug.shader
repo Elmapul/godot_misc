@@ -1,7 +1,7 @@
 shader_type canvas_item;
 
 //since godot cant print to debug shaders, i'm doing an shader to debug shaders
-vec4 imprime(int number, vec2 uv, vec4 color){
+vec4 print(int number, vec2 uv, vec4 color){
 		int userNumber=number;
 	
 	float HoffSet=0.0;
@@ -129,6 +129,24 @@ vec4 imprime(int number, vec2 uv, vec4 color){
 
 //uniform int userNumber;
 void fragment(){
-	COLOR=imprime(8, UV, COLOR);
+	
+	///shift the value 1 decimal place to the left (eg: in an text that is the same as substring)
+	float y=2.8;
+	int x= int(y);
+	x=x*10;
+	float z=y*10.0-float(x);
+	int aux2=int(z);
+	
+	///shift the value 1 decimal place to the right (eg: in an text that is the same as substring)
+	 y=72.8;
+	 x= int(y);
+	 x=x/10;
+	aux2=x;
+	 //z=y/10.0-float(x/10);
+	 //aux2=int(z);
+	
+	
+	
+	COLOR=print(aux2, UV, COLOR);
 
 }
