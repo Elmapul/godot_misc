@@ -1,125 +1,134 @@
 shader_type canvas_item;
 
 //since godot cant print to debug shaders, i'm doing an shader to debug shaders
-
-//uniform float userNumber;
-void fragment(){
-	int userNumber=4;
+vec4 imprime(int number, vec2 uv, vec4 color){
+		int userNumber=number;
 	
 	float HoffSet=0.0;
 	
 	vec4 StrokeC = vec4(0.0, 1.0, 2.0,1.0); //StrokeCollor
-	
-	if(UV.x<1.0){
-		if(UV.y<0.1){
-		COLOR = vec4(1.0,0.0, 0.5, 1.0);
+	vec4 bgColor = vec4(1.0, 0.0, 0.0,1.0); //backGround Collor
+
+	if(uv.x<1.0){
+		if(uv.y<0.1){
+		color = bgColor;
 		//replace with IF because GLES2 cant support switch??
+		
 		switch (userNumber){
 		case 0: 
-			if (UV.x>HoffSet){if (UV.x<HoffSet+0.1){
-				if (UV.y<0.02){if (UV.y>0.01){if ( UV.x<HoffSet+0.07){if (UV.x>HoffSet+0.04){COLOR = StrokeC;}}}} //uper leg
-				if (UV.y<0.09){if ( UV.y>.08){if ( UV.x<HoffSet+0.07){if (UV.x>HoffSet+0.04 ){COLOR = StrokeC;}}}} //botton leg
-				if (UV.y<0.08){if ( UV.y>.02){if (UV.x<HoffSet+0.04){if (UV.x>HoffSet+0.03){COLOR = StrokeC;}}}} //left leg
-				if (UV.y<0.08 ){if (UV.y>.02){if (UV.x<HoffSet+0.08 ){if (UV.x>HoffSet+0.07){COLOR = StrokeC;}}}} //right leg
-				return ;
+			if (uv.x>HoffSet){if (uv.x<HoffSet+0.1){
+				if (uv.y<0.02){if (uv.y>0.01){if ( uv.x<HoffSet+0.07){if (uv.x>HoffSet+0.04){color = StrokeC;}}}} //uper leg
+				if (uv.y<0.09){if ( uv.y>.08){if ( uv.x<HoffSet+0.07){if (uv.x>HoffSet+0.04 ){color = StrokeC;}}}} //botton leg
+				if (uv.y<0.08){if ( uv.y>.02){if (uv.x<HoffSet+0.04){if (uv.x>HoffSet+0.03){color = StrokeC;}}}} //left leg
+				if (uv.y<0.08 ){if (uv.y>.02){if (uv.x<HoffSet+0.08 ){if (uv.x>HoffSet+0.07){color = StrokeC;}}}} //right leg
+				return color;
 				}
+
 		case 1: 
-			if (UV.x>HoffSet){if (UV.x<HoffSet+0.1){
-				if (UV.y<0.02){if (UV.y>0.01){if ( UV.x<HoffSet+0.06){if (UV.x>HoffSet+0.03){COLOR = StrokeC;}}}} //uper leg
-				if (UV.y<0.09){if ( UV.y>.08){if ( UV.x<HoffSet+0.08){if (UV.x>HoffSet+0.03 ){COLOR = StrokeC;}}}} //botton leg
+			if (uv.x>HoffSet){if (uv.x<HoffSet+0.1){
+				if (uv.y<0.02){if (uv.y>0.01){if ( uv.x<HoffSet+0.06){if (uv.x>HoffSet+0.03){color = StrokeC;}}}} //uper leg
+				if (uv.y<0.09){if ( uv.y>.08){if ( uv.x<HoffSet+0.08){if (uv.x>HoffSet+0.03 ){color = StrokeC;}}}} //botton leg
 				
-				if (UV.y<0.08 ){if (UV.y>.02){if (UV.x<HoffSet+0.06 ){if (UV.x>HoffSet+0.05){COLOR = StrokeC;}}}} //right leg
+				if (uv.y<0.08 ){if (uv.y>.02){if (uv.x<HoffSet+0.06 ){if (uv.x>HoffSet+0.05){color = StrokeC;}}}} //right leg
 				}
-		return ;
-		case 2: 
-			if (UV.x>HoffSet){if (UV.x<HoffSet+0.1){
-				if (UV.y<0.02){if (UV.y>0.01){if ( UV.x<HoffSet+0.08){if (UV.x>HoffSet+0.03){COLOR = StrokeC;}}}} //uper leg
-				if (UV.y<0.09){if ( UV.y>.08){if ( UV.x<HoffSet+0.08){if (UV.x>HoffSet+0.03 ){COLOR = StrokeC;}}}} //botton leg
+		return color;}
+		
+				case 2: 
+			if (uv.x>HoffSet){if (uv.x<HoffSet+0.1){
+				if (uv.y<0.02){if (uv.y>0.01){if ( uv.x<HoffSet+0.08){if (uv.x>HoffSet+0.03){color = StrokeC;}}}} //uper leg
+				if (uv.y<0.09){if ( uv.y>.08){if ( uv.x<HoffSet+0.08){if (uv.x>HoffSet+0.03 ){color = StrokeC;}}}} //botton leg
 				
-				if (UV.y<0.06){if ( UV.y>.05){if ( UV.x<HoffSet+0.08){if (UV.x>HoffSet+0.03 ){COLOR = StrokeC;}}}} //mid leg
+				if (uv.y<0.06){if ( uv.y>.05){if ( uv.x<HoffSet+0.08){if (uv.x>HoffSet+0.03 ){color = StrokeC;}}}} //mid leg
 				
-				if (UV.y<0.05 ){if (UV.y>.02){if (UV.x<HoffSet+0.08 ){if (UV.x>HoffSet+0.07){COLOR = StrokeC;}}}} //right leg
-				if (UV.y<0.08 ){if (UV.y>.05){if (UV.x<HoffSet+0.04 ){if (UV.x>HoffSet+0.03){COLOR = StrokeC;}}}} //left leg
+				if (uv.y<0.05 ){if (uv.y>.02){if (uv.x<HoffSet+0.08 ){if (uv.x>HoffSet+0.07){color = StrokeC;}}}} //right leg
+				if (uv.y<0.08 ){if (uv.y>.05){if (uv.x<HoffSet+0.04 ){if (uv.x>HoffSet+0.03){color = StrokeC;}}}} //left leg
 				}
-		return ;
-		case 3: 
-			if (UV.x>HoffSet){if (UV.x<HoffSet+0.1){
-				if (UV.y<0.02){if (UV.y>0.01){if ( UV.x<HoffSet+0.08){if (UV.x>HoffSet+0.03){COLOR = StrokeC;}}}} //uper leg
-				if (UV.y<0.09){if ( UV.y>.08){if ( UV.x<HoffSet+0.08){if (UV.x>HoffSet+0.03 ){COLOR = StrokeC;}}}} //botton leg
+		return color;
 				
-				if (UV.y<0.06){if ( UV.y>.05){if ( UV.x<HoffSet+0.08){if (UV.x>HoffSet+0.03 ){COLOR = StrokeC;}}}} //mid leg
-				
-				if (UV.y<0.08 ){if (UV.y>.02){if (UV.x<HoffSet+0.08 ){if (UV.x>HoffSet+0.07){COLOR = StrokeC;}}}} //right leg				
 				}
-		return ;
+						case 3: 
+			if (uv.x>HoffSet){if (uv.x<HoffSet+0.1){
+				if (uv.y<0.02){if (uv.y>0.01){if ( uv.x<HoffSet+0.08){if (uv.x>HoffSet+0.03){color = StrokeC;}}}} //uper leg
+				if (uv.y<0.09){if ( uv.y>.08){if ( uv.x<HoffSet+0.08){if (uv.x>HoffSet+0.03 ){color = StrokeC;}}}} //botton leg
+				
+				if (uv.y<0.06){if ( uv.y>.05){if ( uv.x<HoffSet+0.08){if (uv.x>HoffSet+0.03 ){color = StrokeC;}}}} //mid leg
+				
+				if (uv.y<0.08 ){if (uv.y>.02){if (uv.x<HoffSet+0.08 ){if (uv.x>HoffSet+0.07){color = StrokeC;}}}} //right leg				
+				}
+		return color ;}
 			case 4: 
-			if (UV.x>HoffSet){if (UV.x<HoffSet+0.1){
-				if (UV.y<0.06){if ( UV.y>.05){if ( UV.x<HoffSet+0.08){if (UV.x>HoffSet+0.03 ){COLOR = StrokeC;}}}} //mid leg
-				if (UV.y<0.08 ){if (UV.y>.02){if (UV.x<HoffSet+0.08 ){if (UV.x>HoffSet+0.07){COLOR = StrokeC;}}}} //right leg
-				if (UV.y<0.05 ){if (UV.y>.02){if (UV.x<HoffSet+0.04 ){if (UV.x>HoffSet+0.03){COLOR = StrokeC;}}}} //left leg
+			if (uv.x>HoffSet){if (uv.x<HoffSet+0.1){
+				if (uv.y<0.06){if ( uv.y>.05){if ( uv.x<HoffSet+0.08){if (uv.x>HoffSet+0.03 ){color = StrokeC;}}}} //mid leg
+				if (uv.y<0.08 ){if (uv.y>.02){if (uv.x<HoffSet+0.08 ){if (uv.x>HoffSet+0.07){color = StrokeC;}}}} //right leg
+				if (uv.y<0.05 ){if (uv.y>.02){if (uv.x<HoffSet+0.04 ){if (uv.x>HoffSet+0.03){color = StrokeC;}}}} //left leg
 				}
-		return ;
+		return color;}
 		case 5: 
-			if (UV.x>HoffSet){if (UV.x<HoffSet+0.1){
-				if (UV.y<0.02){if (UV.y>0.01){if ( UV.x<HoffSet+0.08){if (UV.x>HoffSet+0.03){COLOR = StrokeC;}}}} //uper leg
-				if (UV.y<0.09){if ( UV.y>.08){if ( UV.x<HoffSet+0.08){if (UV.x>HoffSet+0.03 ){COLOR = StrokeC;}}}} //botton leg
+			if (uv.x>HoffSet){if (uv.x<HoffSet+0.1){
+				if (uv.y<0.02){if (uv.y>0.01){if ( uv.x<HoffSet+0.08){if (uv.x>HoffSet+0.03){color = StrokeC;}}}} //uper leg
+				if (uv.y<0.09){if ( uv.y>.08){if ( uv.x<HoffSet+0.08){if (uv.x>HoffSet+0.03 ){color = StrokeC;}}}} //botton leg
 				
-				if (UV.y<0.06){if ( UV.y>.05){if ( UV.x<HoffSet+0.08){if (UV.x>HoffSet+0.03 ){COLOR = StrokeC;}}}} //mid leg
+				if (uv.y<0.06){if ( uv.y>.05){if ( uv.x<HoffSet+0.08){if (uv.x>HoffSet+0.03 ){color = StrokeC;}}}} //mid leg
 				
-				if (UV.y<0.05 ){if (UV.y>.02){if (UV.x<HoffSet+0.04 ){if (UV.x>HoffSet+0.03){COLOR = StrokeC;}}}} //left leg
-				if (UV.y<0.08 ){if (UV.y>.05){if (UV.x<HoffSet+0.08 ){if (UV.x>HoffSet+0.07){COLOR = StrokeC;}}}} //right leg
+				if (uv.y<0.05 ){if (uv.y>.02){if (uv.x<HoffSet+0.04 ){if (uv.x>HoffSet+0.03){color = StrokeC;}}}} //left leg
+				if (uv.y<0.08 ){if (uv.y>.05){if (uv.x<HoffSet+0.08 ){if (uv.x>HoffSet+0.07){color = StrokeC;}}}} //right leg
 				}
-		return ;
-				case 6: 
-			if (UV.x>HoffSet){if (UV.x<HoffSet+0.1){
-				if (UV.y<0.02){if (UV.y>0.01){if ( UV.x<HoffSet+0.08){if (UV.x>HoffSet+0.03){COLOR = StrokeC;}}}} //uper leg
-				if (UV.y<0.09){if ( UV.y>.08){if ( UV.x<HoffSet+0.08){if (UV.x>HoffSet+0.03 ){COLOR = StrokeC;}}}} //botton leg
+		return color;}
+						case 6: 
+			if (uv.x>HoffSet){if (uv.x<HoffSet+0.1){
+				if (uv.y<0.02){if (uv.y>0.01){if ( uv.x<HoffSet+0.08){if (uv.x>HoffSet+0.03){color = StrokeC;}}}} //uper leg
+				if (uv.y<0.09){if ( uv.y>.08){if ( uv.x<HoffSet+0.08){if (uv.x>HoffSet+0.03 ){color = StrokeC;}}}} //botton leg
 				
-				if (UV.y<0.06){if ( UV.y>.05){if ( UV.x<HoffSet+0.08){if (UV.x>HoffSet+0.03 ){COLOR = StrokeC;}}}} //mid leg
+				if (uv.y<0.06){if ( uv.y>.05){if ( uv.x<HoffSet+0.08){if (uv.x>HoffSet+0.03 ){color = StrokeC;}}}} //mid leg
 				
-				if (UV.y<0.08 ){if (UV.y>.02){if (UV.x<HoffSet+0.08 ){if (UV.x>HoffSet+0.07){COLOR = StrokeC;}}}} //right leg
-				if (UV.y<0.08 ){if (UV.y>.05){if (UV.x<HoffSet+0.04 ){if (UV.x>HoffSet+0.03){COLOR = StrokeC;}}}} //left leg
+				if (uv.y<0.08 ){if (uv.y>.02){if (uv.x<HoffSet+0.08 ){if (uv.x>HoffSet+0.07){color = StrokeC;}}}} //right leg
+				if (uv.y<0.08 ){if (uv.y>.05){if (uv.x<HoffSet+0.04 ){if (uv.x>HoffSet+0.03){color = StrokeC;}}}} //left leg
 				}
-		return ;
-		case 7: 
-			if (UV.x>HoffSet){if (UV.x<HoffSet+0.1){
-				if (UV.y<0.02){if (UV.y>0.01){if ( UV.x<HoffSet+0.06){if (UV.x>HoffSet+0.03){COLOR = StrokeC;}}}} //uper leg
-				if (UV.y<0.05){if ( UV.y>.04){if ( UV.x<HoffSet+0.08){if (UV.x>HoffSet+0.03 ){COLOR = StrokeC;}}}} //center leg
+		return color;}
+				case 7: 
+			if (uv.x>HoffSet){if (uv.x<HoffSet+0.1){
+				if (uv.y<0.02){if (uv.y>0.01){if ( uv.x<HoffSet+0.06){if (uv.x>HoffSet+0.03){color = StrokeC;}}}} //uper leg
+				if (uv.y<0.05){if ( uv.y>.04){if ( uv.x<HoffSet+0.08){if (uv.x>HoffSet+0.03 ){color = StrokeC;}}}} //center leg
 				
-				if (UV.y<0.08 ){if (UV.y>.02){if (UV.x<HoffSet+0.06 ){if (UV.x>HoffSet+0.05){COLOR = StrokeC;}}}} //mid leg
+				if (uv.y<0.08 ){if (uv.y>.02){if (uv.x<HoffSet+0.06 ){if (uv.x>HoffSet+0.05){color = StrokeC;}}}} //mid leg
 				}
-		return ;
-						case 8: 
-			if (UV.x>HoffSet){if (UV.x<HoffSet+0.1){
-				if (UV.y<0.02){if (UV.y>0.01){if ( UV.x<HoffSet+0.08){if (UV.x>HoffSet+0.03){COLOR = StrokeC;}}}} //uper leg
-				if (UV.y<0.09){if ( UV.y>.08){if ( UV.x<HoffSet+0.08){if (UV.x>HoffSet+0.03 ){COLOR = StrokeC;}}}} //botton leg
+		return color;}
+								case 8: 
+			if (uv.x>HoffSet){if (uv.x<HoffSet+0.1){
+				if (uv.y<0.02){if (uv.y>0.01){if ( uv.x<HoffSet+0.08){if (uv.x>HoffSet+0.03){color = StrokeC;}}}} //uper leg
+				if (uv.y<0.09){if ( uv.y>.08){if ( uv.x<HoffSet+0.08){if (uv.x>HoffSet+0.03 ){color = StrokeC;}}}} //botton leg
 				
-				if (UV.y<0.06){if ( UV.y>.05){if ( UV.x<HoffSet+0.08){if (UV.x>HoffSet+0.03 ){COLOR = StrokeC;}}}} //mid leg
+				if (uv.y<0.06){if ( uv.y>.05){if ( uv.x<HoffSet+0.08){if (uv.x>HoffSet+0.03 ){color = StrokeC;}}}} //mid leg
 				
-				if (UV.y<0.08 ){if (UV.y>.02){if (UV.x<HoffSet+0.08 ){if (UV.x>HoffSet+0.07){COLOR = StrokeC;}}}} //right leg
-				if (UV.y<0.08 ){if (UV.y>.02){if (UV.x<HoffSet+0.04 ){if (UV.x>HoffSet+0.03){COLOR = StrokeC;}}}} //left leg
+				if (uv.y<0.08 ){if (uv.y>.02){if (uv.x<HoffSet+0.08 ){if (uv.x>HoffSet+0.07){color = StrokeC;}}}} //right leg
+				if (uv.y<0.08 ){if (uv.y>.02){if (uv.x<HoffSet+0.04 ){if (uv.x>HoffSet+0.03){color = StrokeC;}}}} //left leg
 				}
-		return ;
-				case 9: 
-			if (UV.x>HoffSet){if (UV.x<HoffSet+0.1){
-				if (UV.y<0.02){if (UV.y>0.01){if ( UV.x<HoffSet+0.08){if (UV.x>HoffSet+0.03){COLOR = StrokeC;}}}} //uper leg
-				if (UV.y<0.09){if ( UV.y>.08){if ( UV.x<HoffSet+0.08){if (UV.x>HoffSet+0.03 ){COLOR = StrokeC;}}}} //botton leg
+		return color;}
+						case 9: 
+			if (uv.x>HoffSet){if (uv.x<HoffSet+0.1){
+				if (uv.y<0.02){if (uv.y>0.01){if ( uv.x<HoffSet+0.08){if (uv.x>HoffSet+0.03){color = StrokeC;}}}} //uper leg
+				if (uv.y<0.09){if ( uv.y>.08){if ( uv.x<HoffSet+0.08){if (uv.x>HoffSet+0.03 ){color = StrokeC;}}}} //botton leg
 				
-				if (UV.y<0.06){if ( UV.y>.05){if ( UV.x<HoffSet+0.08){if (UV.x>HoffSet+0.03 ){COLOR = StrokeC;}}}} //mid leg
+				if (uv.y<0.06){if ( uv.y>.05){if ( uv.x<HoffSet+0.08){if (uv.x>HoffSet+0.03 ){color = StrokeC;}}}} //mid leg
 				
-				if (UV.y<0.08 ){if (UV.y>.02){if (UV.x<HoffSet+0.08 ){if (UV.x>HoffSet+0.07){COLOR = StrokeC;}}}} //right leg
-				if (UV.y<0.06 ){if (UV.y>.02){if (UV.x<HoffSet+0.04 ){if (UV.x>HoffSet+0.03){COLOR = StrokeC;}}}} //left leg
+				if (uv.y<0.08 ){if (uv.y>.02){if (uv.x<HoffSet+0.08 ){if (uv.x>HoffSet+0.07){color = StrokeC;}}}} //right leg
+				if (uv.y<0.06 ){if (uv.y>.02){if (uv.x<HoffSet+0.04 ){if (uv.x>HoffSet+0.03){color = StrokeC;}}}} //left leg
 				}
-		return ;
+		return color;}
+
+				
+				}
+		
+		
+		
+		
+		
+		
 		}}
-		
-		
-		}
-	}
+				return color;}
 
-}
+//uniform int userNumber;
+void fragment(){
+	COLOR=imprime(8, UV, COLOR);
 
-
-void vertex() {
-  //VERTEX += vec2(10.0, 0.0);
 }
