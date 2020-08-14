@@ -1,6 +1,6 @@
 shader_type canvas_item;
 
-//va int test=2;
+//since godot cant print to debug shaders, i'm doing an shader to debug shaders
 
 //uniform float userNumber;
 void fragment(){
